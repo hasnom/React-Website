@@ -58,8 +58,8 @@ export function Expertise() {
 
     return (
         <section ref={containerRef} id="expertise" className="relative z-10 h-[450vh] bg-bg-base/20">
-            {/* Sticky wrapper: removed overflow-hidden and using min-h-screen to prevent clipping */}
-            <div className="sticky top-0 min-h-screen flex flex-col justify-center py-20 px-[5%]">
+            {/* Sticky wrapper: using svh for Safari/macOS consistency */}
+            <div className="sticky top-0 min-h-[100svh] flex flex-col justify-center py-20 px-[5%]">
                 <div className="max-w-[1100px] w-full mx-auto relative">
 
                     <motion.div style={{ opacity: headerOpacity, y: headerY }} className="mb-10 md:mb-14">
