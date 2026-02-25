@@ -1,0 +1,44 @@
+import type { Metadata } from "next";
+import { DM_Sans, Poppins } from "next/font/google";
+import "./globals.css";
+import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { GradientWave } from "@/components/ui/GradientWave";
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+});
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+export const metadata: Metadata = {
+  title: "Hassan Noman — Product Leader, Digital Banking & Fintech",
+  description: "Built and scaled digital financial products that millions of people use every day.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn(dmSans.variable, poppins.variable, "antialiased relative")}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <GradientWave />
+          <div className="glow-orb glow-orb-1" aria-hidden="true" />
+          <div className="glow-orb glow-orb-2" aria-hidden="true" />
+          <div className="relative z-10">
+            {children}
+          </div>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
