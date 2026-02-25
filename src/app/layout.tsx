@@ -3,6 +3,7 @@ import { DM_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { SecurityProvider } from "@/components/layout/SecurityProvider";
 import { GradientWave } from "@/components/ui/GradientWave";
 
 const dmSans = DM_Sans({
@@ -48,12 +49,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={cn(dmSans.variable, poppins.variable, "antialiased relative")}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <GradientWave />
-          <div className="glow-orb glow-orb-1" aria-hidden="true" />
-          <div className="glow-orb glow-orb-2" aria-hidden="true" />
-          <div className="relative z-10">
-            {children}
-          </div>
+          <SecurityProvider>
+            <GradientWave />
+            <div className="glow-orb glow-orb-1" aria-hidden="true" />
+            <div className="glow-orb glow-orb-2" aria-hidden="true" />
+            <div className="relative z-10">
+              {children}
+            </div>
+          </SecurityProvider>
         </ThemeProvider>
       </body>
     </html>
