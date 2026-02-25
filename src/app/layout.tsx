@@ -20,6 +20,23 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Hassan Noman — Product Leader, Digital Banking & Fintech",
   description: "Built and scaled digital financial products that millions of people use every day.",
+  icons: {
+    icon: "/profile.jpeg",
+    apple: "/profile.jpeg",
+  },
+  openGraph: {
+    title: "Hassan Noman — Product Leader",
+    description: "Product Leader · Digital Banking & Fintech · Multi-billion PKR portfolio management.",
+    images: [
+      {
+        url: "/profile.jpeg",
+        width: 800,
+        height: 800,
+        alt: "Hassan Noman - Profile",
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
