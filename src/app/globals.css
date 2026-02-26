@@ -48,7 +48,7 @@
 
 .dark {
   /* Dark Mode Theme */
-  --bg: #080c14;
+  --bg: #000000;
   --bg2: #0d1320;
   --bg3: #111827;
   --card: #111827;
@@ -172,32 +172,6 @@ body::after {
   z-index: -1;
   background-color: var(--bg);
   overflow: hidden;
-}
-
-@keyframes move-dots {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(24px);
-  }
-}
-
-.dotted-overlay {
-  position: absolute;
-  inset: -100px;
-  background-image: radial-gradient(var(--text-muted) 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 0.15;
-  z-index: 2;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 100%);
-  animation: move-dots 4s linear infinite;
-}
-
-.dark .dotted-overlay {
-  opacity: 0.2;
 }
 
 .dark .mesh-blob {

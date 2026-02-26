@@ -40,9 +40,51 @@ export function SecurityProvider({ children }: { children: React.ReactNode }) {
         document.addEventListener("contextmenu", handleContextMenu);
         document.addEventListener("keydown", handleKeyDown);
 
+        // 3. Prevent Content Copying (Global CSS Injection)
+        const style = document.createElement("style");
+        style.innerHTML = `
+      * {
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+        -webkit-user-drag: none !important;
+      }
+      input, textarea {
+        -webkit-user-select: text !important;
+        -moz-user-select: text !important;
+        -ms-user-select: text !important;
+        user-select: text !important;
+      }
+    `;
+        document.head.appendChild(style);
+
+        // 4. Advanced Deterrent: Debugger loop
+        // This makes it difficult to use DevTools if they are already open or opened later
+        const devToolsDeterrent = setInterval(() => {
+            (function () {
+                (function a() {
+                    try {
+                        (function b(i) {
+                            if (("" + i / i).length !== 1 || i % 20 === 0) {
+                                (function () { }).constructor("debugger")();
+                            } else {
+                                debugger;
+                            }
+                            b(++i);
+                        })(0);
+                    } catch (e) {
+                        setTimeout(a, 5000);
+                    }
+                })();
+            })();
+        }, 1000);
+
         return () => {
             document.removeEventListener("contextmenu", handleContextMenu);
             document.removeEventListener("keydown", handleKeyDown);
+            document.head.removeChild(style);
+            clearInterval(devToolsDeterrent);
         };
     }, []);
 

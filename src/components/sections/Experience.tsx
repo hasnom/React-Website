@@ -129,8 +129,8 @@ function TimelineItem({ item }: { item: typeof timelineData[0] }) {
         offset: ["start end", "center center"]
     });
 
-    const opacity = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
-    const x = useTransform(scrollYProgress, [0, 0.4], [30, 0]);
+    const opacity = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
+    const x = useTransform(scrollYProgress, [0, 0.05], [20, 0]);
 
     return (
         <motion.div

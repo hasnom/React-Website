@@ -126,10 +126,10 @@ function CaseCard({ data, index }: { data: typeof cases[0], index: number }) {
         offset: ["start end", "center center"]
     });
 
-    // Slow and aesthetic fade-in for cards (now reaching full opacity earlier for better visibility)
-    const opacity = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
-    const scale = useTransform(scrollYProgress, [0, 0.4], [0.95, 1]);
-    const y = useTransform(scrollYProgress, [0, 0.4], [60, 0]);
+    // Instant opacity on slightest scroll
+    const opacity = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
+    const scale = useTransform(scrollYProgress, [0, 0.05], [0.95, 1]);
+    const y = useTransform(scrollYProgress, [0, 0.05], [40, 0]);
 
     // Background number parallax
     const yParallax = useTransform(scrollYProgress, [0, 1], [0, 60]);
