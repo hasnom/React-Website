@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
+import { LiquidButton } from "../ui/LiquidButton";
 
 export function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -33,17 +34,16 @@ export function Navbar() {
                 hassannoman.com<span className="text-accent"></span>
             </Link>
 
-            <div className="hidden md:flex gap-8 items-center">
+            <div className="hidden md:flex gap-4 items-center">
                 <NavLink href="#impact">Impact</NavLink>
                 <NavLink href="#work">Case Studies</NavLink>
                 <NavLink href="#experience">Experience</NavLink>
                 <NavLink href="#philosophy">Philosophy</NavLink>
-                <Link
-                    href="#contact"
-                    className="bg-accent text-bg-base px-5 py-2 rounded-md font-medium text-sm transition-transform hover:scale-105"
-                >
-                    Let's Talk
-                </Link>
+                <LiquidButton asChild variant="default" className="font-bold text-sm tracking-wide ml-4">
+                    <Link href="#contact">
+                        Let's Talk
+                    </Link>
+                </LiquidButton>
                 <ThemeToggle />
             </div>
         </motion.nav>
@@ -52,11 +52,10 @@ export function Navbar() {
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
     return (
-        <Link
-            href={href}
-            className="text-text-muted text-[13px] tracking-[0.08em] uppercase transition-colors hover:text-accent font-normal"
-        >
-            {children}
-        </Link>
+        <LiquidButton asChild variant="glass" className="h-8 px-4 font-body uppercase tracking-wider text-[11px]">
+            <Link href={href}>
+                {children}
+            </Link>
+        </LiquidButton>
     );
 }
