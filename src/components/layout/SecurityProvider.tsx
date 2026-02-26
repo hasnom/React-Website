@@ -59,9 +59,21 @@ export function SecurityProvider({ children }: { children: React.ReactNode }) {
     `;
         document.head.appendChild(style);
 
-        // 4. Advanced Deterrent: Debugger loop
-        // This makes it difficult to use DevTools if they are already open or opened later
+        // 4. Advanced Deterrent: Console clearing and Debugger loop
         const devToolsDeterrent = setInterval(() => {
+            // Continuously clear console to hide logs
+            console.clear();
+
+            // Check for DevTools by timing
+            const startTime = performance.now();
+            debugger;
+            const endTime = performance.now();
+
+            if (endTime - startTime > 100) {
+                // If it took too long, DevTools is likely open
+                // We can add more aggressive behavior here if needed
+            }
+
             (function () {
                 (function a() {
                     try {
@@ -74,7 +86,7 @@ export function SecurityProvider({ children }: { children: React.ReactNode }) {
                             b(++i);
                         })(0);
                     } catch (e) {
-                        setTimeout(a, 5000);
+                        // Silent catch
                     }
                 })();
             })();

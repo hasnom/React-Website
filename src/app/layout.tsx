@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { SecurityProvider } from "@/components/layout/SecurityProvider";
 import { GradientWave } from "@/components/ui/GradientWave";
+import { PROFILE_IMAGE_BASE64 } from "@/lib/assets";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -23,15 +24,15 @@ export const metadata: Metadata = {
   description: "Built and scaled digital financial products that millions of people use every day.",
   keywords: ["Hassan Noman", "Product Owner", "Product Management", "Digital Banking", "Temenos Infinity", "Fintech"],
   icons: {
-    icon: "/profile.jpeg",
-    apple: "/profile.jpeg",
+    icon: PROFILE_IMAGE_BASE64,
+    apple: PROFILE_IMAGE_BASE64,
   },
   openGraph: {
     title: "Hassan Noman — Product Leader",
     description: "Product Leader · Digital Banking & Fintech · Multi-billion PKR portfolio management.",
     images: [
       {
-        url: "/profile.jpeg",
+        url: PROFILE_IMAGE_BASE64,
         width: 800,
         height: 800,
         alt: "Hassan Noman - Profile",

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { PROFILE_IMAGE_BASE64 } from "@/lib/assets";
 
 export function Hero() {
     const fadeUpVariants = {
@@ -87,7 +88,7 @@ export function Hero() {
                     <div className="absolute inset-0 max-w-[300px] lg:max-w-[400px] mx-auto bg-accent/30 rounded-[20px] blur-[30px] animate-pulse pointer-events-none" />
 
                     <motion.img
-                        src="/profile.jpeg"
+                        src={PROFILE_IMAGE_BASE64}
                         alt="Hassan Noman - Product Leader"
                         className="relative z-10 w-full max-w-[300px] lg:max-w-[400px] h-auto rounded-[20px] border border-accent/20 transition-all duration-400"
                         animate={{ y: [0, -10, 0] }}
