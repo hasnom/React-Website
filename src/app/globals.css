@@ -78,6 +78,10 @@ body {
   font-weight: 300;
   line-height: 1.7;
   overflow-x: hidden;
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+  position: relative;
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
