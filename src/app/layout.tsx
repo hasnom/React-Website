@@ -20,6 +20,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hassannoman.com"),
   title: "Hassan Noman — Product Leader, Digital Banking & Fintech",
   description: "Built and scaled digital financial products that millions of people use every day.",
   keywords: ["Hassan Noman", "Product Owner", "Product Management", "Digital Banking", "Temenos Infinity", "Fintech"],
