@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { PROFILE_IMAGE_BASE64 } from "@/lib/assets";
-import { FluidBackground } from "@/components/ui/FluidBackground";
 
 export function Hero() {
     const fadeUpVariants = {
@@ -28,9 +27,6 @@ export function Hero() {
 
     return (
         <section className="min-h-screen flex items-center pt-[120px] pb-[80px] px-[5%] relative z-10 overflow-visible">
-            {/* Full-Screen Fluid Background (Sphere Math) */}
-            <FluidBackground className="z-[-1]" />
-
             <div className="flex flex-col lg:flex-row items-center justify-between gap-[40px] lg:gap-[60px] w-full max-w-[1400px] mx-auto text-center lg:text-left relative z-20">
 
                 <motion.div
