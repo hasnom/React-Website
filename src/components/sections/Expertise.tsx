@@ -57,7 +57,7 @@ export function Expertise() {
     const headerY = useTransform(scrollYProgress, [0, 0.08], [40, 0]);
 
     return (
-        <section ref={containerRef} id="expertise" className="relative z-10 h-[450vh] bg-bg-base/20">
+        <section ref={containerRef} id="expertise" className="relative z-10 h-[300vh] bg-bg-base/20">
             {/* Sticky wrapper: using svh for Safari/macOS consistency */}
             <div className="sticky top-0 min-h-[100svh] flex flex-col justify-center py-20 px-[5%]">
                 <div className="max-w-[1100px] w-full mx-auto relative">
@@ -75,11 +75,11 @@ export function Expertise() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         {expertiseList.map((item, i) => {
                             // Staggered slow triggers
-                            const start = 0.08 + (i * 0.12);
-                            const end = start + 0.15; // Increased duration for "slower" feel
+                            const start = 0.05 + (i * 0.12);
+                            const end = start + 0.20; // Increased duration for "slower" feel
 
                             const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
-                            const y = useTransform(scrollYProgress, [start, end], [50, 0]);
+                            const y = useTransform(scrollYProgress, [start, end], [1000, 0.5]);
 
                             return (
                                 <motion.div
