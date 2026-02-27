@@ -37,7 +37,7 @@ export function Philosophy() {
                         },
                         {
                             tag: <>If the platform{"\n"}can't, <span className="text-accent">Build</span> it</>,
-                            text: <>When the main app couldn't deliver non-financial branch services on time, I didn't wait — I proposed and built an in-house solution. Constraints are just invitations to build something better, <span className="text-accent">faster</span>, and more yours.</>
+                            text: <>When the main app couldn't deliver non-financial branch services on time, I didn't wait — I proposed and built an in-house solution. Constraints are just invitations to build something better, faster, and more yours.</>
                         },
                         {
                             tag: <>Ship fast,{"\n"}iterate <span className="text-accent">Faster</span></>,
