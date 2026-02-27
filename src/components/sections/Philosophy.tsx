@@ -27,10 +27,22 @@ export function Philosophy() {
                     </ScrollReveal>
 
                     {[
-                        { tag: "Minimal friction, \nmaximum trust", text: "Great banking products disappear into the background. Every flow I design is judged by one question: can a customer complete this without thinking?" },
-                        { tag: "Data first, \ninstinct second", text: "The phased biometric rollout wasn't intuition — it was built on cohort segmentation data. Revenue growth wasn't luck — it was identifying monetization potential." },
-                        { tag: "If the platform \ncan't, build it", text: "When the main app couldn't deliver non-financial branch services on time, I didn't wait — I proposed and built an in-house solution. Constraints are just invitations to build something better, faster, and more yours." },
-                        { tag: "Ship fast, \niterate faster", text: "App store rating went from 2.3 to 3.8 in 30 days not because of perfect planning — but because I stayed close to the feedback, moved fast on fixes, and cared about every interaction the customer had with the product." },
+                        {
+                            tag: <>Minimal <span className="text-accent">Friction</span>,{"\n"}maximum trust</>,
+                            text: <>Great banking products disappear into the background. Every flow I design is judged by one question: can a customer complete this without thinking?</>
+                        },
+                        {
+                            tag: <><span className="text-accent">Data</span> first,{"\n"}instinct second</>,
+                            text: <>The phased biometric rollout wasn't intuition — it was built on cohort segmentation data. Revenue growth wasn't luck — it was identifying monetization potential.</>
+                        },
+                        {
+                            tag: <>If the platform{"\n"}can't, <span className="text-accent">Build</span> it</>,
+                            text: <>When the main app couldn't deliver non-financial branch services on time, I didn't wait — I proposed and built an in-house solution. Constraints are just invitations to build something better, <span className="text-accent">faster</span>, and more yours.</>
+                        },
+                        {
+                            tag: <>Ship fast,{"\n"}iterate <span className="text-accent">Faster</span></>,
+                            text: <>App store rating went from 2.3 to 3.8 in 30 days not because of perfect planning — but because I stayed close to the feedback, moved fast on fixes, and cared about every interaction the customer had with the product.</>
+                        },
                     ].map((item, i) => (
                         <ScrollReveal
                             key={i}
