@@ -93,8 +93,8 @@ export function CaseStudies() {
     });
 
     // Slow and aesthetic fade-in for header
-    const headerOpacity = useTransform(headerScroll, [0, 0.8], [0, 1]);
-    const headerY = useTransform(headerScroll, [0, 0.8], [40, 0]);
+    const headerOpacity = useTransform(headerScroll, [0, 0.08], [0, 1]);
+    const headerY = useTransform(headerScroll, [0, 0.08], [40, 0]);
 
     return (
         <section id="work" className="py-[120px] relative z-10 px-[5%] overflow-visible">

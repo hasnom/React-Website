@@ -69,8 +69,8 @@ export function Experience() {
         offset: ["start end", "center center"]
     });
 
-    const headerOpacity = useTransform(headerScroll, [0, 0.8], [0, 1]);
-    const headerY = useTransform(headerScroll, [0, 0.8], [40, 0]);
+    const headerOpacity = useTransform(headerScroll, [0, 0.08], [0, 1]);
+    const headerY = useTransform(headerScroll, [0, 0.08], [40, 0]);
 
     const lineRef = useRef(null);
     const { scrollYProgress: lineScroll } = useScroll({

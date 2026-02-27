@@ -49,8 +49,8 @@ export function GradientWave() {
                     translateX: "-50%",
                     translateY: "-50%",
                     background: "radial-gradient(circle, var(--accent) 0%, transparent 60%)",
-                    opacity: 0.35,
-                    filter: "blur(40px)",
+                    opacity: 0.3,
+                    filter: "blur(50px)",
                 }}
             />
 
