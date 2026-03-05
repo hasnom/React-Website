@@ -40,9 +40,9 @@ export function GradientWave() {
                 BRIGHTER DISPERSIVE SPOTLIGHT
                 Layered effects for "dispersing" feel
             */}
-            {/* Inner Core */}
+            {/* Inner Core - Hidden on touch devices/light mode for performance */}
             <motion.div
-                className="absolute w-[400px] h-[400px] rounded-full pointer-events-none z-10"
+                className="absolute w-[400px] h-[400px] rounded-full pointer-events-none z-10 hidden md:dark:block"
                 style={{
                     x: springX,
                     y: springY,
@@ -54,9 +54,9 @@ export function GradientWave() {
                 }}
             />
 
-            {/* Large Outer Dispersion */}
+            {/* Large Outer Dispersion - Hidden on touch devices/light mode for performance */}
             <motion.div
-                className="absolute w-[800px] h-[800px] rounded-full pointer-events-none z-10"
+                className="absolute w-[800px] h-[800px] rounded-full pointer-events-none z-10 hidden md:dark:block"
                 style={{
                     x: springX,
                     y: springY,
