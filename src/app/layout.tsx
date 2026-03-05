@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { DM_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { SecurityProvider } from "@/components/layout/SecurityProvider";
 import { CursorProvider, Cursor } from "@/components/ui/Cursor";
 import { GradientWave } from "@/components/ui/GradientWave";
 import { PROFILE_IMAGE_BASE64 } from "@/lib/assets";
