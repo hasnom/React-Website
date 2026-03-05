@@ -50,11 +50,14 @@ const expertiseList = [
 
 export function Expertise() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end end"]
+    });
 
-    // Fast Header reveal for better mobile/desktop immediacy
-    const headerOpacity = useTransform(scrollYProgress, [0, 0.02], [0, 1]);
-    const headerY = useTransform(scrollYProgress, [0, 0.02], [30, 0]);
+    // Extremely fast header reveal as it enters viewport
+    const headerOpacity = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
+    const headerY = useTransform(scrollYProgress, [0, 0.05], [20, 0]);
 
     return (
         <section ref={containerRef} id="expertise" className="relative z-10 h-[300vh] bg-bg-base/10">
@@ -74,12 +77,12 @@ export function Expertise() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         {expertiseList.map((item, i) => {
-                            // Instant staggered triggers
-                            const start = 0.01 + (i * 0.08);
-                            const end = start + 0.12;
+                            // Instant staggered triggers starting from 0 (entry)
+                            const start = (i * 0.02);
+                            const end = start + 0.1;
 
                             const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
-                            const y = useTransform(scrollYProgress, [start, end], [60, 0]);
+                            const y = useTransform(scrollYProgress, [start, end], [40, 0]);
 
                             return (
                                 <motion.div
