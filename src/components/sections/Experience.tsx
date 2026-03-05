@@ -69,8 +69,8 @@ export function Experience() {
         offset: ["start end", "center center"]
     });
 
-    const headerOpacity = useTransform(headerScroll, [0, 0.08], [0, 1]);
-    const headerY = useTransform(headerScroll, [0, 0.08], [40, 0]);
+    const headerOpacity = useTransform(headerScroll, [0, 0.02], [0, 1]);
+    const headerY = useTransform(headerScroll, [0, 0.02], [30, 0]);
 
     const lineRef = useRef(null);
     const { scrollYProgress: lineScroll } = useScroll({
@@ -136,7 +136,7 @@ function TimelineItem({ item }: { item: typeof timelineData[0] }) {
         <motion.div
             ref={ref}
             style={{ opacity, x }}
-            className="bg-card border border-card-border rounded-2xl p-7 md:p-8 transition-colors hover:border-accent/20"
+            className="glow-card rounded-2xl p-7 md:p-8 transition-colors"
         >
             <div className="text-[11px] tracking-[0.1em] uppercase text-accent mb-1.5">
                 {item.period}

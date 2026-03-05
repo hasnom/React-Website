@@ -52,13 +52,13 @@ export function Expertise() {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
 
-    // Slow Header reveal
-    const headerOpacity = useTransform(scrollYProgress, [0, 0.08], [0, 1]);
-    const headerY = useTransform(scrollYProgress, [0, 0.08], [40, 0]);
+    // Fast Header reveal for better mobile/desktop immediacy
+    const headerOpacity = useTransform(scrollYProgress, [0, 0.02], [0, 1]);
+    const headerY = useTransform(scrollYProgress, [0, 0.02], [30, 0]);
 
     return (
-        <section ref={containerRef} id="expertise" className="relative z-10 h-[300vh] bg-bg-base/20">
-            {/* Sticky wrapper: using svh for Safari/macOS consistency */}
+        <section ref={containerRef} id="expertise" className="relative z-10 h-[300vh] bg-bg-base/10">
+            {/* Sticky wrapper */}
             <div className="sticky top-0 min-h-[100svh] flex flex-col justify-center py-20 px-[5%]">
                 <div className="max-w-[1100px] w-full mx-auto relative">
 
@@ -74,18 +74,18 @@ export function Expertise() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         {expertiseList.map((item, i) => {
-                            // Staggered slow triggers
-                            const start = 0.05 + (i * 0.12);
-                            const end = start + 0.20; // Increased duration for "slower" feel
+                            // Instant staggered triggers
+                            const start = 0.01 + (i * 0.08);
+                            const end = start + 0.12;
 
                             const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
-                            const y = useTransform(scrollYProgress, [start, end], [1000, 0.5]);
+                            const y = useTransform(scrollYProgress, [start, end], [60, 0]);
 
                             return (
                                 <motion.div
                                     key={i}
                                     style={{ opacity, y }}
-                                    className="group relative bg-card border border-card-border rounded-2xl p-6 md:p-8 text-left transition-all duration-300 hover:border-accent/25 hover:-translate-y-1 overflow-hidden"
+                                    className="group relative glow-card rounded-2xl p-6 md:p-8 text-left transition-all duration-300 hover:-translate-y-1 overflow-hidden"
                                 >
                                     {/* Top Gradient Border on Hover */}
                                     <div className="absolute top-0 left-0 right-0 h-[2px] opacity-0 bg-gradient-to-r from-accent to-accent-2 transition-opacity duration-300 group-hover:opacity-100 rounded-t-2xl" />

@@ -16,7 +16,7 @@ export function Philosophy() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <ScrollReveal
-                        className="md:col-span-2 bg-card border border-card-border rounded-2xl p-9 bg-gradient-to-br from-accent/10 via-[rgba(124,92,252,0.15)] to-bg-base/90 shadow-[0_20px_40px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+                        className="md:col-span-2 glow-card rounded-2xl p-9 bg-gradient-to-br from-accent/10 via-[rgba(124,92,252,0.15)] to-bg-base/90 shadow-[0_20px_40px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
                     >
                         <div className="font-display text-[clamp(24px,4vw,36px)] font-semibold text-text-strong leading-[1.3] tracking-tight mb-4">
                             "The goal isn't to live forever, the goal is to <span className="text-accent-3">create something that will.</span>"
@@ -46,7 +46,7 @@ export function Philosophy() {
                     ].map((item, i) => (
                         <ScrollReveal
                             key={i}
-                            className="bg-card border border-card-border rounded-2xl p-9"
+                            className="glow-card rounded-2xl p-9"
                         >
                             <div className="font-display text-[20px] font-bold text-text-strong leading-[1.3] whitespace-pre-line mb-4">
                                 {item.tag}

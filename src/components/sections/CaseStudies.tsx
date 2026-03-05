@@ -138,7 +138,7 @@ function CaseCard({ data, index }: { data: typeof cases[0], index: number }) {
         <motion.div
             ref={ref}
             style={{ opacity, scale, y }}
-            className="bg-card border border-card-border rounded-[20px] p-[24px] md:p-[44px] flex flex-col md:grid md:grid-cols-2 gap-10 md:items-start text-justify transition-colors duration-300 hover:border-accent/20 relative overflow-hidden"
+            className="glow-card rounded-[20px] p-[24px] md:p-[44px] flex flex-col md:grid md:grid-cols-2 gap-10 md:items-start text-justify transition-colors duration-300 relative overflow-hidden"
         >
             <motion.div
                 style={{ y: yParallax }}

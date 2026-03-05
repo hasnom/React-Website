@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { SecurityProvider } from "@/components/layout/SecurityProvider";
+import { Cursor } from "@/components/ui/Cursor";
 import { GradientWave } from "@/components/ui/GradientWave";
 import { PROFILE_IMAGE_BASE64 } from "@/lib/assets";
 
@@ -59,6 +60,7 @@ export default function RootLayout({
       <body className={cn(dmSans.variable, poppins.variable, "antialiased relative")}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <SecurityProvider>
+            <Cursor />
             <GradientWave />
             <div className="glow-orb glow-orb-1" aria-hidden="true" />
             <div className="glow-orb glow-orb-2" aria-hidden="true" />
