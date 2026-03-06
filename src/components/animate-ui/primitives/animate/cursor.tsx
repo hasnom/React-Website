@@ -95,8 +95,8 @@ export interface CursorProps {
 
 export function Cursor({ children, asChild, className, springConfig }: CursorProps) {
     const { mouseX, mouseY, isVisible } = useCursor();
-    const x = useSpring(mouseX, springConfig || { damping: 20, stiffness: 150, mass: 0.5 });
-    const y = useSpring(mouseY, springConfig || { damping: 20, stiffness: 150, mass: 0.5 });
+    const x = useSpring(mouseX, springConfig || { damping: 10, stiffness: 400, mass: 0.1 });
+    const y = useSpring(mouseY, springConfig || { damping: 10, stiffness: 400, mass: 0.1 });
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {

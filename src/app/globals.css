@@ -71,6 +71,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* UNIVERSAL CURSOR HIDER */
+*,
+html,
+body {
+  cursor: none !important;
+}
+
 body {
   background: var(--bg);
   color: var(--text-main);
@@ -83,18 +90,19 @@ body {
   width: 100%;
   position: relative;
   transition: background-color 0.4s ease, color 0.4s ease;
-  cursor: none !important;
 }
 
-/* Hide cursor on all interactive elements */
-a,
-button,
-[role="button"],
-input,
-textarea,
-select,
-.glow-card {
-  cursor: none !important;
+/* Ensure custom cursor components can still capture pointer events if needed through JavaScript, 
+   but the visual cursor is always hidden. */
+
+/* Restore pointer events for mobile if needed, but the user is specifically asking about localhost/desktop */
+@media (hover: none) and (pointer: coarse) {
+
+  *,
+  html,
+  body {
+    cursor: auto !important;
+  }
 }
 
 /* ─── NOISE OVERLAY ─── */
