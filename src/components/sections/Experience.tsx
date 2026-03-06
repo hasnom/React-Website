@@ -135,7 +135,13 @@ function TimelineItem({ item }: { item: typeof timelineData[0] }) {
     return (
         <motion.div
             ref={ref}
-            style={{ opacity, x }}
+            style={{
+                opacity,
+                x,
+                "--card-opacity": "1",
+                "--card-blur": "0px",
+                "--card-gradient": "linear-gradient(280deg, rgb(var(--accent-rgb) / 0.1) 0%, transparent 50%)"
+            } as any}
             className="glow-card rounded-2xl p-7 md:p-8 transition-colors"
         >
             <div className="text-[11px] tracking-[0.1em] uppercase text-accent mb-1.5">

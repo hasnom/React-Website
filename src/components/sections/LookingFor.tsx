@@ -16,7 +16,12 @@ export function LookingFor() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <ScrollReveal
-                        className="bg-card border border-accent/20 rounded-2xl p-8 md:p-10 bg-gradient-to-br from-accent/5 to-transparent relative overflow-hidden"
+                        style={{
+                            "--card-opacity": "1",
+                            "--card-blur": "0px",
+                            "--card-gradient": "linear-gradient(280deg, rgb(var(--accent-rgb) / 0.1) 0%, transparent 50%)"
+                        } as any}
+                        className="glow-card rounded-2xl p-8 md:p-10 relative overflow-hidden"
                     >
                         <span className="inline-block text-[12px] px-3.5 py-1.5 rounded-full font-medium bg-accent/10 text-accent mb-4">
                             Head of Product · Open to Hire
@@ -35,7 +40,12 @@ export function LookingFor() {
                     </ScrollReveal>
 
                     <ScrollReveal
-                        className="bg-card border border-accent-2/20 rounded-2xl p-8 md:p-10 bg-gradient-to-br from-accent-2/5 to-transparent relative overflow-hidden"
+                        style={{
+                            "--card-opacity": "1",
+                            "--card-blur": "0px",
+                            "--card-gradient": "linear-gradient(280deg, rgb(var(--accent-rgb) / 0.1) 0%, transparent 50%)"
+                        } as any}
+                        className="glow-card rounded-2xl p-8 md:p-10 relative overflow-hidden"
                     >
                         <span className="inline-block text-[12px] px-3.5 py-1.5 rounded-full font-medium bg-accent-2/10 text-accent-2 mb-4">
                             Co-Founding · Open to Partner

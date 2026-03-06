@@ -87,7 +87,13 @@ export function Expertise() {
                             return (
                                 <motion.div
                                     key={i}
-                                    style={{ opacity, y }}
+                                    style={{
+                                        opacity,
+                                        y,
+                                        "--card-opacity": "1", // OPACITY: 0 (invisible) to 1 (solid)
+                                        "--card-blur": "0px",  // BLUR: set to 0px for a perfectly solid card
+                                        "--card-gradient": "linear-gradient(280deg, rgb(var(--accent-rgb) / 0.1) 0%, transparent 50%)"
+                                    } as any}
                                     className="group relative glow-card rounded-2xl p-6 md:p-8 text-left transition-all duration-300 hover:-translate-y-1 overflow-hidden"
                                 >
                                     {/* Top Gradient Border on Hover */}

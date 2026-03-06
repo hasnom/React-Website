@@ -39,10 +39,15 @@ export function Credentials() {
                     {credentials.map((cert, i) => (
                         <ScrollReveal
                             key={i}
-                            className={`bg-card border rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 
+                            style={{
+                                "--card-opacity": "1",
+                                "--card-blur": "0px",
+                                "--card-gradient": "linear-gradient(280deg, rgb(var(--accent-rgb) / 0.1) 0%, transparent 50%)"
+                            } as any}
+                            className={`glow-card rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 
                 ${cert.special
                                     ? 'border-gold/30 bg-gradient-to-br from-gold/5 to-transparent hover:border-gold/50'
-                                    : 'border-card-border hover:border-accent/20'}`}
+                                    : ''}`}
                         >
                             <div className={`text-[11px] uppercase tracking-[0.1em] mb-2 ${cert.special ? 'text-gold' : 'text-accent'}`}>
                                 {cert.org}

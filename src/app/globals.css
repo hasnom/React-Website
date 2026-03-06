@@ -32,8 +32,11 @@
 
   /* Accent colors tuned for light mode */
   --accent: #0066cc;
+  --accent-rgb: 0 102 204;
   --accent2: #5e5ce6;
+  --accent2-rgb: 94 92 230;
   --accent3: #34c759;
+  --accent3-rgb: 52 199 89;
 
   /* High contrast text */
   --text-strong: #1d1d1f;
@@ -55,8 +58,11 @@
   --card-border: rgba(255, 255, 255, 0.08);
 
   --accent: #00d4ff;
+  --accent-rgb: 0 212 255;
   --accent2: #7c5cfc;
+  --accent2-rgb: 124 92 252;
   --accent3: #00ffa3;
+  --accent3-rgb: 0 255 163;
 
   --text-strong: #ffffff;
   --text-main: #e8edf5;
@@ -118,6 +124,38 @@ body::after {
 
 .dark body::after {
   opacity: 0.4;
+}
+
+/* ─── PREMIUM GLOW CARDS ─── */
+:root {
+  --card-rgb: 255 255 255;
+  --card-opacity: 0.98;
+  --card-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+}
+
+.dark {
+  --card-rgb: 17 24 39;
+  --card-opacity: 0.85;
+  --card-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.glow-card {
+  position: relative;
+  background-color: rgb(var(--card-rgb) / var(--card-opacity, 0.95));
+  background-image:
+    radial-gradient(circle at top left, rgba(var(--accent-rgb, 0 102 204) / 0.05), transparent 40%),
+    var(--card-gradient);
+  backdrop-filter: blur(var(--card-blur, 12px));
+  -webkit-backdrop-filter: blur(var(--card-blur, 12px));
+  border: 1px solid var(--card-border);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.glow-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* ─── CUSTOM ANIMATIONS ─── */

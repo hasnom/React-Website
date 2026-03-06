@@ -6,11 +6,12 @@ import { useRef, ReactNode } from "react";
 interface ScrollRevealProps {
     children: ReactNode;
     className?: string;
+    style?: any;
     yOffset?: number;
     delay?: number;
 }
 
-export function ScrollReveal({ children, className = "", yOffset = 30 }: ScrollRevealProps) {
+export function ScrollReveal({ children, className = "", style = {}, yOffset = 30 }: ScrollRevealProps) {
     const ref = useRef<HTMLDivElement>(null);
 
     const { scrollYProgress } = useScroll({
@@ -35,7 +36,7 @@ export function ScrollReveal({ children, className = "", yOffset = 30 }: ScrollR
 }
 
 // Variation for elements that should only animate in from the bottom without fading out at the top
-export function ScrollRevealIn({ children, className = "", yOffset = 30 }: ScrollRevealProps) {
+export function ScrollRevealIn({ children, className = "", style = {}, yOffset = 30 }: ScrollRevealProps) {
     const ref = useRef<HTMLDivElement>(null);
 
     const { scrollYProgress } = useScroll({

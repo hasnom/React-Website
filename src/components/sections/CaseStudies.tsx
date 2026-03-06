@@ -137,7 +137,14 @@ function CaseCard({ data, index }: { data: typeof cases[0], index: number }) {
     return (
         <motion.div
             ref={ref}
-            style={{ opacity, scale, y }}
+            style={{
+                opacity,
+                scale,
+                y,
+                "--card-opacity": "1",
+                "--card-blur": "0px",
+                "--card-gradient": "linear-gradient(280deg, rgb(var(--accent-rgb) / 0.1) 0%, transparent 50%)"
+            } as any}
             className="glow-card rounded-[20px] p-[24px] md:p-[44px] flex flex-col md:grid md:grid-cols-2 gap-10 md:items-start text-justify transition-colors duration-300 relative overflow-hidden"
         >
             <motion.div

@@ -43,7 +43,12 @@ export function Skills() {
                     {skills.map((skill, i) => (
                         <ScrollReveal
                             key={i}
-                            className="group flex flex-col md:flex-row items-center gap-2.5 bg-card border border-card-border rounded-xl px-4 py-3.5 transition-colors duration-300 hover:border-accent/30 hover:bg-bg-alt"
+                            style={{
+                                "--card-opacity": "1",
+                                "--card-blur": "0px",
+                                "--card-gradient": "linear-gradient(280deg, rgb(var(--accent-rgb) / 0.1) 0%, transparent 50%)"
+                            } as any}
+                            className="group flex flex-col md:flex-row items-center gap-2.5 glow-card rounded-xl px-4 py-3.5 transition-colors duration-300"
                         >
                             <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${skill.color}`}></div>
                             <span className="text-[14px] text-text-main group-hover:text-text-strong transition-colors">
