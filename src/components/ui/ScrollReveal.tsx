@@ -51,7 +51,7 @@ export function ScrollRevealIn({ children, className = "", style = {}, yOffset =
     return (
         <motion.div
             ref={ref}
-            style={{ opacity, y, scale }}
+            style={{ opacity, y, scale, ...style }}
             className={className}
         >
             {children}
