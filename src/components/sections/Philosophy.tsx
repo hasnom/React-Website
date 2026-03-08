@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { GlowingEdgeCard } from "@/components/ui/GlowingEdgeCard";
 
 export function Philosophy() {
     return (
@@ -16,19 +17,18 @@ export function Philosophy() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <ScrollReveal
-                        style={{
-                            "--card-opacity": "1",
-                            "--card-blur": "0px",
-                            "--card-gradient": "linear-gradient(280deg, rgb(var(--accent-rgb) / 0.1) 0%, transparent 50%)"
-                        } as any}
-                        className="md:col-span-2 glow-card rounded-2xl p-9"
+                        className="md:col-span-2"
                     >
-                        <div className="font-display text-[clamp(24px,4vw,36px)] font-semibold text-text-strong leading-[1.3] tracking-tight mb-4">
-                            "The goal isn't to live forever, the goal is to <span className="text-accent-3">create something that will.</span>"
-                        </div>
-                        <p className="text-[16px] md:text-[18px] text-text-main mt-5 leading-[1.8]">
-                            I am here to make an impact and put a <strong>dent in the universe</strong>. I thrive on thinking outside the box and being innovative, even when it requires being unorthodox. I am fueled by a passion for doing <strong>THE GREAT THINGS</strong>. I am not afraid to build bridges or tear down walls to ensure we are doing something positive for the masses.
-                        </p>
+                        <GlowingEdgeCard className="h-full">
+                            <div className="p-9">
+                                <div className="font-display text-[clamp(24px,4vw,36px)] font-semibold text-text-strong leading-[1.3] tracking-tight mb-4">
+                                    "The goal isn't to live forever, the goal is to <span className="text-accent-3">create something that will.</span>"
+                                </div>
+                                <p className="text-[16px] md:text-[18px] text-text-main mt-5 leading-[1.8]">
+                                    I am here to make an impact and put a <strong>dent in the universe</strong>. I thrive on thinking outside the box and being innovative, even when it requires being unorthodox. I am fueled by a passion for doing <strong>THE GREAT THINGS</strong>. I am not afraid to build bridges or tear down walls to ensure we are doing something positive for the masses.
+                                </p>
+                            </div>
+                        </GlowingEdgeCard>
                     </ScrollReveal>
 
                     {[
@@ -51,19 +51,17 @@ export function Philosophy() {
                     ].map((item, i) => (
                         <ScrollReveal
                             key={i}
-                            style={{
-                                "--card-opacity": "1",
-                                "--card-blur": "0px",
-                                "--card-gradient": "linear-gradient(280deg, rgb(var(--accent-rgb) / 0.1) 0%, transparent 50%)"
-                            } as any}
-                            className="glow-card rounded-2xl p-9"
                         >
-                            <div className="font-display text-[20px] font-bold text-text-strong leading-[1.3] whitespace-pre-line mb-4">
-                                {item.tag}
-                            </div>
-                            <p className="text-[15px] text-text-muted leading-[1.8]">
-                                {item.text}
-                            </p>
+                            <GlowingEdgeCard className="h-full">
+                                <div className="p-9">
+                                    <div className="font-display text-[20px] font-bold text-text-strong leading-[1.3] whitespace-pre-line mb-4">
+                                        {item.tag}
+                                    </div>
+                                    <p className="text-[15px] text-text-muted leading-[1.8]">
+                                        {item.text}
+                                    </p>
+                                </div>
+                            </GlowingEdgeCard>
                         </ScrollReveal>
                     ))}
                 </div>

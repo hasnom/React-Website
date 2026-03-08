@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { GlowingEdgeCard } from "@/components/ui/GlowingEdgeCard";
 
 const timelineData = [
     {
@@ -138,30 +139,30 @@ function TimelineItem({ item }: { item: typeof timelineData[0] }) {
             style={{
                 opacity,
                 x,
-                "--card-opacity": "1",
-                "--card-blur": "0px",
-                "--card-gradient": "linear-gradient(280deg, rgb(var(--accent-rgb) / 0.1) 0%, transparent 50%)"
-            } as any}
-            className="glow-card rounded-2xl p-7 md:p-8 transition-colors"
+            }}
         >
-            <div className="text-[11px] tracking-[0.1em] uppercase text-accent mb-1.5">
-                {item.period}
-            </div>
-            <h3 className={`font-display text-[22px] md:text-[24px] font-bold leading-[1.2] tracking-tight mb-2 ${item.dim ? 'text-text-strong opacity-80' : 'text-text-strong'}`}>
-                {item.title}
-            </h3>
-            <div className="text-text-muted text-[14px] mb-4">
-                {item.company}
-            </div>
-
-            <div className="flex flex-col gap-2 mt-3">
-                {item.highlights?.map((hl, j) => (
-                    <div key={j} className="flex gap-2.5 text-[14px] text-text-main items-start">
-                        <span className="text-accent font-bold flex-shrink-0">›</span>
-                        {hl}
+            <GlowingEdgeCard className="h-full">
+                <div className="p-7 md:p-8 transition-colors">
+                    <div className="text-[11px] tracking-[0.1em] uppercase text-accent mb-1.5">
+                        {item.period}
                     </div>
-                ))}
-            </div>
+                    <h3 className={`font-display text-[22px] md:text-[24px] font-bold leading-[1.2] tracking-tight mb-2 ${item.dim ? 'text-text-strong opacity-80' : 'text-text-strong'}`}>
+                        {item.title}
+                    </h3>
+                    <div className="text-text-muted text-[14px] mb-4">
+                        {item.company}
+                    </div>
+
+                    <div className="flex flex-col gap-2 mt-3">
+                        {item.highlights?.map((hl, j) => (
+                            <div key={j} className="flex gap-2.5 text-[14px] text-text-main items-start">
+                                <span className="text-accent font-bold flex-shrink-0">›</span>
+                                {hl}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </GlowingEdgeCard>
         </motion.div>
     );
 }

@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { GlowingEdgeCard } from "@/components/ui/GlowingEdgeCard";
 
 const cases = [
     {
@@ -141,62 +142,62 @@ function CaseCard({ data, index }: { data: typeof cases[0], index: number }) {
                 opacity,
                 scale,
                 y,
-                "--card-opacity": "1",
-                "--card-blur": "0px",
-                "--card-gradient": "linear-gradient(280deg, rgb(var(--accent-rgb) / 0.1) 0%, transparent 50%)"
-            } as any}
-            className="glow-card rounded-[20px] p-[24px] md:p-[44px] flex flex-col md:grid md:grid-cols-2 gap-10 md:items-start text-justify transition-colors duration-300 relative overflow-hidden"
+            }}
         >
-            <motion.div
-                style={{ y: yParallax }}
-                className="absolute top-8 right-11 font-display text-[72px] font-extrabold text-white/[0.03] leading-none pointer-events-none"
-            >
-                {data.num}
-            </motion.div>
+            <GlowingEdgeCard className="h-full">
+                <div className="p-[24px] md:p-[44px] flex flex-col md:grid md:grid-cols-2 gap-10 md:items-start text-justify transition-colors duration-300 relative overflow-hidden">
+                    <motion.div
+                        style={{ y: yParallax }}
+                        className="absolute top-8 right-11 font-display text-[72px] font-extrabold text-white/[0.03] leading-none pointer-events-none"
+                    >
+                        {data.num}
+                    </motion.div>
 
-            <div>
-                <span className={`inline-block text-[11px] px-3 py-1 rounded-full mb-4 font-medium tracking-[0.06em] uppercase ${tagStyles[data.tagColor]}`}>
-                    {data.tagTitle}
-                </span>
-                <h3 className="font-display text-[22px] font-bold text-text-strong tracking-tight mb-3 leading-[1.2]">
-                    {data.title}
-                </h3>
-                <div className="text-[14px] text-text-muted leading-[1.7]">
-                    {data.problem}
-                </div>
+                    <div>
+                        <span className={`inline-block text-[11px] px-3 py-1 rounded-full mb-4 font-medium tracking-[0.06em] uppercase ${tagStyles[data.tagColor]}`}>
+                            {data.tagTitle}
+                        </span>
+                        <h3 className="font-display text-[22px] font-bold text-text-strong tracking-tight mb-3 leading-[1.2]">
+                            {data.title}
+                        </h3>
+                        <div className="text-[14px] text-text-muted leading-[1.7]">
+                            {data.problem}
+                        </div>
 
-                <div className="mt-5 pt-5 border-t border-card-border md:col-span-2">
-                    <div className="text-[11px] tracking-[0.1em] uppercase text-text-muted mb-3">
-                        How I approached it
+                        <div className="mt-5 pt-5 border-t border-card-border md:col-span-2">
+                            <div className="text-[11px] tracking-[0.1em] uppercase text-text-muted mb-3">
+                                How I approached it
+                            </div>
+                            <div className="flex gap-3 flex-wrap">
+                                {data.steps.map((step, k) => (
+                                    <div key={k} className="flex items-center gap-2 text-[13px] text-text-main bg-white/[0.03] border border-card-border px-3.5 py-2 rounded-lg">
+                                        <span className="w-5 h-5 rounded-full bg-accent text-bg-base flex items-center justify-center text-[10px] font-bold flex-shrink-0">
+                                            {k + 1}
+                                        </span>
+                                        {step}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                    <div className="flex gap-3 flex-wrap">
-                        {data.steps.map((step, k) => (
-                            <div key={k} className="flex items-center gap-2 text-[13px] text-text-main bg-white/[0.03] border border-card-border px-3.5 py-2 rounded-lg">
-                                <span className="w-5 h-5 rounded-full bg-accent text-bg-base flex items-center justify-center text-[10px] font-bold flex-shrink-0">
-                                    {k + 1}
-                                </span>
-                                {step}
+
+                    <div className="flex flex-col gap-4">
+                        {data.metrics.map((metric, j) => (
+                            <div key={j} className="flex items-center gap-4 p-4 bg-white/[0.03] rounded-[10px] border border-card-border">
+                                <span className="text-[18px] flex-shrink-0">{metric.icon}</span>
+                                <div>
+                                    <div className="font-display text-[clamp(24px,3vw,36px)] font-bold tracking-tight text-text-strong leading-none mb-1">
+                                        {metric.val}
+                                    </div>
+                                    <div className="text-[12px] text-text-muted leading-[1.4]">
+                                        {metric.desc}
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
-            </div>
-
-            <div className="flex flex-col gap-4">
-                {data.metrics.map((metric, j) => (
-                    <div key={j} className="flex items-center gap-4 p-4 bg-white/[0.03] rounded-[10px] border border-card-border">
-                        <span className="text-[18px] flex-shrink-0">{metric.icon}</span>
-                        <div>
-                            <div className="font-display text-[clamp(24px,3vw,36px)] font-bold tracking-tight text-text-strong leading-none mb-1">
-                                {metric.val}
-                            </div>
-                            <div className="text-[12px] text-text-muted leading-[1.4]">
-                                {metric.desc}
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
+            </GlowingEdgeCard>
         </motion.div>
     );
 }

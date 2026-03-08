@@ -47,6 +47,14 @@
   /* White overlays for light mode (reversed to dark) */
   --white-5: rgba(0, 0, 0, 0.03);
   --white-10: rgba(0, 0, 0, 0.06);
+
+  /* GlowingEdgeCard Variables - Light Mode */
+  --ge-card-bg: linear-gradient(8deg, color-mix(in hsl, hsl(260, 25%, 95%), #000 2.5%) 75%, hsl(260, 25%, 95%) 75.5%);
+  --ge-blend: darken;
+  --ge-glow-blend: luminosity;
+  --ge-glow-color: 210deg 100% 40%;
+  --ge-glow-boost: 15%;
+  --ge-fg: black;
 }
 
 .dark {
@@ -71,6 +79,14 @@
 
   --white-5: rgba(255, 255, 255, 0.05);
   --white-10: rgba(255, 255, 255, 0.1);
+
+  /* GlowingEdgeCard Variables - Dark Mode */
+  --ge-card-bg: linear-gradient(8deg, #111827 75%, color-mix(in hsl, #111827, white 2.5%) 75.5%);
+  --ge-blend: soft-light;
+  --ge-glow-blend: plus-lighter;
+  --ge-glow-color: 190deg 100% 50%;
+  --ge-glow-boost: 0%;
+  --ge-fg: white;
 }
 
 html {

@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { GlowingEdgeCard } from "@/components/ui/GlowingEdgeCard";
 
 const expertiseList = [
     {
@@ -90,35 +91,32 @@ export function Expertise() {
                                     style={{
                                         opacity,
                                         y,
-                                        "--card-opacity": "1", // OPACITY: 0 (invisible) to 1 (solid)
-                                        "--card-blur": "0px",  // BLUR: set to 0px for a perfectly solid card
-                                        "--card-gradient": "linear-gradient(280deg, rgb(var(--accent-rgb) / 0.1) 0%, transparent 50%)"
-                                    } as any}
-                                    className="group relative glow-card rounded-2xl p-6 md:p-8 text-left transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+                                    }}
                                 >
-                                    {/* Top Gradient Border on Hover */}
-                                    <div className="absolute top-0 left-0 right-0 h-[2px] opacity-0 bg-gradient-to-r from-accent to-accent-2 transition-opacity duration-300 group-hover:opacity-100 rounded-t-2xl" />
+                                    <GlowingEdgeCard className="h-full">
+                                        <div className="p-6 md:p-8 text-left">
+                                            <div className="w-12 h-12 text-[24px] rounded-xl bg-[var(--color-white-5)] border border-[var(--color-white-10)] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                                                {item.icon}
+                                            </div>
 
-                                    <div className="w-12 h-12 text-[24px] rounded-xl bg-[var(--color-white-5)] border border-[var(--color-white-10)] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                                        {item.icon}
-                                    </div>
-
-                                    <h3 className="font-display text-[20px] font-bold text-text-strong mb-3 tracking-tight leading-snug">
-                                        {item.title}
-                                    </h3>
-                                    <p className="text-[14px] text-text-muted leading-[1.7]">
-                                        {item.desc}
-                                    </p>
-                                    <div className="flex flex-wrap gap-1.5 mt-4">
-                                        {item.tags.map((tag, j) => (
-                                            <span
-                                                key={j}
-                                                className="text-[11px] px-2.5 py-1 rounded-full bg-[var(--color-white-5)] text-text-muted tracking-[0.04em]"
-                                            >
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
+                                            <h3 className="font-display text-[20px] font-bold text-text-strong mb-3 tracking-tight leading-snug">
+                                                {item.title}
+                                            </h3>
+                                            <p className="text-[14px] text-text-muted leading-[1.7]">
+                                                {item.desc}
+                                            </p>
+                                            <div className="flex flex-wrap gap-1.5 mt-4">
+                                                {item.tags.map((tag, j) => (
+                                                    <span
+                                                        key={j}
+                                                        className="text-[11px] px-2.5 py-1 rounded-full bg-[var(--color-white-5)] text-text-muted tracking-[0.04em]"
+                                                    >
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </GlowingEdgeCard>
                                 </motion.div>
                             );
                         })}
