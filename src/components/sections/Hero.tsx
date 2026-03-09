@@ -5,12 +5,19 @@ import { useState, useEffect } from "react";
 import { PROFILE_IMAGE_BASE64 } from "@/lib/assets";
 
 export function Hero() {
-    const fadeUpVariants = {
-        hidden: { opacity: 0, y: 30, scale: 0.95 },
-        visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: "easeOut" as const } },
-    };
-
     const [currentDateTime, setCurrentDateTime] = useState<string>("");
+    const [displayText, setDisplayText] = useState({
+        name: "",
+        title: "",
+        bio: ""
+    });
+    const [showCursor, setShowCursor] = useState(true);
+
+    const fullTexts = {
+        name: "Hassan Noman",
+        title: "Product Leader · Digital Banking & Fintech",
+        bio: "Built and scaled digital financial products that millions of people use every day. From zero-to-scale platform migrations to multi-channel banking ecosystems — Turning complex banking infrastructure into seamless customer experiences"
+    };
 
     useEffect(() => {
         const updateDate = () => {
@@ -24,6 +31,54 @@ export function Hero() {
         const interval = setInterval(updateDate, 60000);
         return () => clearInterval(interval);
     }, []);
+
+    // Blinking cursor effect
+    useEffect(() => {
+        const cursorInterval = setInterval(() => {
+            setShowCursor(prev => !prev);
+        }, 530);
+        return () => clearInterval(cursorInterval);
+    }, []);
+
+    // Typing sequence logic
+    useEffect(() => {
+        let currentIdx = 0;
+        const totalChars = fullTexts.name.length + fullTexts.title.length + fullTexts.bio.length;
+
+        const typeChar = () => {
+            if (currentIdx >= totalChars) return;
+
+            if (currentIdx < fullTexts.name.length) {
+                setDisplayText(prev => ({
+                    ...prev,
+                    name: fullTexts.name.substring(0, currentIdx + 1)
+                }));
+            } else if (currentIdx < fullTexts.name.length + fullTexts.title.length) {
+                const titleIdx = currentIdx - fullTexts.name.length;
+                setDisplayText(prev => ({
+                    ...prev,
+                    title: fullTexts.title.substring(0, titleIdx + 1)
+                }));
+            } else {
+                const bioIdx = currentIdx - (fullTexts.name.length + fullTexts.title.length);
+                setDisplayText(prev => ({
+                    ...prev,
+                    bio: fullTexts.bio.substring(0, bioIdx + 1)
+                }));
+            }
+
+            currentIdx++;
+            setTimeout(typeChar, 5); // Faster typing speed (30ms per char)
+        };
+
+        const startTimer = setTimeout(typeChar, 800); // Small delay before starting
+        return () => clearTimeout(startTimer);
+    }, []);
+
+    const fadeUpVariants = {
+        hidden: { opacity: 0, y: 30, scale: 0.95 },
+        visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: "easeOut" as const } },
+    };
 
     return (
         <section className="min-h-screen flex items-center pt-[120px] pb-[80px] px-[5%] relative z-10 overflow-visible">
@@ -42,17 +97,28 @@ export function Hero() {
                         {currentDateTime || "Loading..."}
                     </motion.div>
 
-                    <motion.h1 variants={fadeUpVariants} className="font-display text-[clamp(48px,7vw,88px)] font-extrabold leading-[0.95] tracking-tight text-text-strong mb-2">
-                        Hassan<br />
-                        <span className="text-accent">Noman</span>
+                    <motion.h1 className="font-display text-[clamp(48px,7vw,88px)] font-extrabold leading-[0.95] tracking-tight text-text-strong mb-2">
+                        {displayText.name.includes("Hassan") ? (
+                            <>
+                                {displayText.name.substring(0, 6)}<br />
+                                <span className="text-accent">{displayText.name.substring(6)}</span>
+                            </>
+                        ) : (
+                            displayText.name
+                        )}
+                        {displayText.bio.length === 0 && displayText.name.length < fullTexts.name.length && <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} text-accent ml-1 align-bottom`}>.</span>}
                     </motion.h1>
 
-                    <motion.div variants={fadeUpVariants} className="font-display text-[clamp(18px,2.5vw,28px)] font-normal text-text-muted mb-7 pb-1 leading-normal overflow-visible">
-                        Product Leader · Digital Banking & Fintech
+                    <motion.div className="font-display text-[clamp(18px,2.5vw,28px)] font-normal text-text-muted mb-7 pb-1 leading-normal overflow-visible min-h-[1.5em]">
+                        {displayText.title}
+                        {displayText.bio.length === 0 && displayText.title.length > 0 && displayText.title.length < fullTexts.title.length && <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} text-text-muted ml-0.5 align-bottom`}>.</span>}
                     </motion.div>
 
-                    <motion.p variants={fadeUpVariants} className="text-[17px] text-text-main max-w-[580px] leading-[1.8] mb-10 text-justify mx-auto lg:mx-0 opacity-90">
-                        Built and scaled digital financial products that millions of people use every day. From zero-to-scale platform migrations to multi-channel banking ecosystems — Turning complex banking infrastructure into seamless customer experiences.
+                    <motion.p className="text-[17px] text-text-main max-w-[580px] leading-[1.8] mb-10 text-justify mx-auto lg:mx-0 opacity-90 min-h-[100px]">
+                        {displayText.bio}
+                        {(displayText.bio.length > 0 || displayText.title.length === fullTexts.title.length) && (
+                            <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} text-accent font-bold inline-block ml-0.5`}>.</span>
+                        )}
                     </motion.p>
 
                     <motion.div variants={fadeUpVariants} className="flex gap-4 flex-wrap justify-center lg:justify-start">
