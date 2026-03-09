@@ -40,23 +40,23 @@ export function GradientWave() {
                 BRIGHTER DISPERSIVE SPOTLIGHT
                 Layered effects for "dispersing" feel
             */}
-            {/* Inner Core - Hidden on touch devices for performance */}
+            {/* Inner Core - Visible on all but simplified on mobile */}
             <motion.div
-                className="absolute w-[400px] h-[400px] rounded-full pointer-events-none z-10 hidden md:block"
+                className="absolute w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full pointer-events-none z-10"
                 style={{
                     x: springX,
                     y: springY,
                     translateX: "-50%",
                     translateY: "-50%",
                     background: "radial-gradient(circle, var(--accent) 0%, transparent 60%)",
-                    opacity: 0.25,
-                    filter: "blur(50px)",
+                    opacity: 0.2,
+                    filter: "blur(30px)", // Reduced blur for mobile performance
                 }}
             />
 
-            {/* Large Outer Dispersion - Hidden on touch devices for performance */}
+            {/* Large Outer Dispersion - Desktop Only for ultra-smooth performance on mobile */}
             <motion.div
-                className="absolute w-[800px] h-[800px] rounded-full pointer-events-none z-10 hidden md:block"
+                className="absolute w-[800px] h-[800px] rounded-full pointer-events-none z-10 hidden lg:block"
                 style={{
                     x: springX,
                     y: springY,

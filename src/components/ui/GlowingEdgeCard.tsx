@@ -187,6 +187,7 @@ export function GlowingEdgeCard({
         '--glow-color': 'var(--ge-glow-color)',
         '--glow-boost': 'var(--ge-glow-boost)',
         '--fg': 'var(--ge-fg)',
+        willChange: 'transform, opacity',
       } as React.CSSProperties}
       {...props}
     >
