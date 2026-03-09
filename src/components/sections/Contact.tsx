@@ -1,13 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+
 
 export function Contact() {
     return (
         <section id="contact" className="py-[100px] px-[5%] text-center relative z-10">
             <div className="max-w-[600px] mx-auto">
-                <ScrollReveal>
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
                     <div className="text-[11px] tracking-[0.18em] uppercase text-accent font-medium mb-4">Get in Touch</div>
                     <h2 className="font-display text-[clamp(28px,4vw,44px)] font-bold tracking-tight text-text-strong leading-[1.1] mb-5">
                         Let's build something great
@@ -40,7 +45,7 @@ export function Contact() {
                             💬 WhatsApp
                         </a>
                     </div>
-                </ScrollReveal>
+                </motion.div>
             </div>
         </section>
     );

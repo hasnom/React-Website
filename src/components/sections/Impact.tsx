@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+
 
 const impacts = [
     { value: "850K+", label: "Active Digital\nBanking Users", color: "text-accent" },
@@ -59,12 +59,17 @@ export function Impact() {
     return (
         <section id="impact" className="py-[100px] relative z-10 px-[5%]">
             <div className="max-w-[1400px] mx-auto">
-                <ScrollReveal>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
                     <div className="text-[11px] tracking-[0.18em] uppercase text-accent font-medium mb-4 text-center lg:text-left">Scale & Execution</div>
                     <h2 className="font-display text-[clamp(32px,4vw,52px)] font-bold tracking-tight text-text-strong leading-[1.1] mb-12 text-center lg:text-left">
                         Numbers that matter
                     </h2>
-                </ScrollReveal>
+                </motion.div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-stretch auto-rows-fr">
                     {impacts.map((item, index) => {

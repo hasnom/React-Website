@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { GlowingEdgeCard } from "@/components/ui/GlowingEdgeCard";
 
 const credentials = [
@@ -29,17 +28,26 @@ export function Credentials() {
     return (
         <section className="py-[100px] px-[5%] relative z-10">
             <div className="max-w-[1100px] mx-auto">
-                <ScrollReveal>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
                     <div className="text-[11px] tracking-[0.18em] uppercase text-accent font-medium mb-4">Credentials</div>
                     <h2 className="font-display text-[clamp(32px,4vw,52px)] font-bold tracking-tight text-text-strong leading-[1.1] mb-12">
                         Education, certifications & recognition
                     </h2>
-                </ScrollReveal>
+                </motion.div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {credentials.map((cert, i) => (
-                        <ScrollReveal
+                        <motion.div
                             key={i}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: i * 0.1 }}
                         >
                             <GlowingEdgeCard className={`h-full ${cert.special ? 'border-gold/30' : ''}`}>
                                 <div className={`p-6 transition-all duration-300 hover:-translate-y-1 ${cert.special ? 'bg-gradient-to-br from-gold/5 to-transparent' : ''}`}>
@@ -52,7 +60,7 @@ export function Credentials() {
                                     <div className="text-[13px] text-text-muted">{cert.year}</div>
                                 </div>
                             </GlowingEdgeCard>
-                        </ScrollReveal>
+                        </motion.div>
                     ))}
                 </div>
             </div>

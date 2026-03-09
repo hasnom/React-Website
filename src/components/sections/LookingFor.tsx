@@ -1,22 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { GlowingEdgeCard } from "@/components/ui/GlowingEdgeCard";
 
 export function LookingFor() {
     return (
         <section className="py-[100px] border-t border-card-border px-[5%] relative z-10">
             <div className="max-w-[1100px] mx-auto">
-                <ScrollReveal>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
                     <div className="text-[11px] tracking-[0.18em] uppercase text-accent font-medium mb-4">Next Chapter</div>
                     <h2 className="font-display text-[clamp(32px,4vw,52px)] font-bold tracking-tight text-text-strong leading-[1.1] mb-14">
                         What I'm building toward
                     </h2>
-                </ScrollReveal>
+                </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <ScrollReveal>
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                    >
                         <GlowingEdgeCard className="h-full">
                             <div className="p-8 md:p-10 relative overflow-hidden">
                                 <span className="inline-block text-[12px] px-3.5 py-1.5 rounded-full font-medium bg-accent/10 text-accent mb-4">
@@ -35,9 +44,14 @@ export function LookingFor() {
                                 </div>
                             </div>
                         </GlowingEdgeCard>
-                    </ScrollReveal>
+                    </motion.div>
 
-                    <ScrollReveal>
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                    >
                         <GlowingEdgeCard className="h-full">
                             <div className="p-8 md:p-10 relative overflow-hidden">
                                 <span className="inline-block text-[12px] px-3.5 py-1.5 rounded-full font-medium bg-accent-2/10 text-accent-2 mb-4">
@@ -56,7 +70,7 @@ export function LookingFor() {
                                 </div>
                             </div>
                         </GlowingEdgeCard>
-                    </ScrollReveal>
+                    </motion.div>
                 </div>
             </div>
         </section>

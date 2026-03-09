@@ -1,23 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { GlowingEdgeCard } from "@/components/ui/GlowingEdgeCard";
 
 export function Philosophy() {
     return (
         <section id="philosophy" className="py-[100px] px-[5%] relative z-10">
             <div className="max-w-[1100px] mx-auto">
-                <ScrollReveal>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
                     <div className="text-[11px] tracking-[0.18em] uppercase text-accent font-medium mb-4">Product Philosophy</div>
                     <h2 className="font-display text-[clamp(32px,4vw,52px)] font-bold tracking-tight text-text-strong leading-[1.1] mb-14">
                         How I think about building
                     </h2>
-                </ScrollReveal>
+                </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <ScrollReveal
+                    <motion.div
                         className="md:col-span-2"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7 }}
                     >
                         <GlowingEdgeCard className="h-full">
                             <div className="p-9">
@@ -29,7 +37,7 @@ export function Philosophy() {
                                 </p>
                             </div>
                         </GlowingEdgeCard>
-                    </ScrollReveal>
+                    </motion.div>
 
                     {[
                         {
@@ -49,8 +57,12 @@ export function Philosophy() {
                             text: <>App store rating went from 2.3 to 3.8 in 30 days not because of perfect planning — but because I stayed close to the feedback, moved fast on fixes, and cared about every interaction the customer had with the product.</>
                         },
                     ].map((item, i) => (
-                        <ScrollReveal
+                        <motion.div
                             key={i}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: i * 0.1 }}
                         >
                             <GlowingEdgeCard className="h-full">
                                 <div className="p-9">
@@ -62,7 +74,7 @@ export function Philosophy() {
                                     </p>
                                 </div>
                             </GlowingEdgeCard>
-                        </ScrollReveal>
+                        </motion.div>
                     ))}
                 </div>
             </div>

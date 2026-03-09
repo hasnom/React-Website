@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { GlowingEdgeCard } from "@/components/ui/GlowingEdgeCard";
 
 const skills = [
@@ -33,17 +32,26 @@ export function Skills() {
     return (
         <section className="py-[100px] border-y border-card-border px-[5%] relative z-10 bg-bg-alt/30">
             <div className="max-w-[1100px] mx-auto">
-                <ScrollReveal>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
                     <div className="text-[11px] tracking-[0.18em] uppercase text-accent font-medium mb-4">Technical & Domain Skills</div>
                     <h2 className="font-display text-[clamp(32px,4vw,52px)] font-bold tracking-tight text-text-strong leading-[1.1] mb-14">
                         The full toolkit
                     </h2>
-                </ScrollReveal>
+                </motion.div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 gap-y-3">
                     {skills.map((skill, i) => (
-                        <ScrollReveal
+                        <motion.div
                             key={i}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: i * 0.05 }}
                         >
                             <GlowingEdgeCard className="h-full">
                                 <div className="flex flex-col md:flex-row items-center gap-2.5 px-4 py-3.5 transition-colors duration-300">
@@ -53,7 +61,7 @@ export function Skills() {
                                     </span>
                                 </div>
                             </GlowingEdgeCard>
-                        </ScrollReveal>
+                        </motion.div>
                     ))}
                 </div>
             </div>

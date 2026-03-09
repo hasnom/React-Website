@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 import { GlowingEdgeCard } from "@/components/ui/GlowingEdgeCard";
 
@@ -51,80 +51,69 @@ const expertiseList = [
 
 export function Expertise() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end end"]
-    });
-
-    // Extremely fast header reveal as it enters viewport
-    const headerOpacity = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
-    const headerY = useTransform(scrollYProgress, [0, 0.05], [20, 0]);
 
     return (
-        <section ref={containerRef} id="expertise" className="relative z-10 h-[300vh] bg-bg-base/10">
-            {/* Sticky wrapper */}
-            <div className="sticky top-0 min-h-[100svh] flex flex-col justify-center py-20 px-[5%]">
-                <div className="max-w-[1100px] w-full mx-auto relative">
+        <section ref={containerRef} id="expertise" className="relative z-10 py-[100px] bg-bg-base/10 px-[5%]">
+            <div className="max-w-[1100px] w-full mx-auto relative">
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6 }}
+                    className="mb-10 md:mb-14"
+                >
+                    <div className="text-[11px] tracking-[0.18em] uppercase text-accent font-medium mb-4">Core Expertise</div>
+                    <h2 className="font-display text-[clamp(28px,3vw,42px)] font-bold tracking-tight text-text-strong leading-[1.1] mb-4">
+                        Owning the full product lifecycle
+                    </h2>
+                    <p className="text-text-muted text-[17px] max-w-[560px] leading-[1.8]">
+                        From customer-facing features to Revenue to Regulatory compliance — Managing the whole stack.
+                    </p>
+                </motion.div>
 
-                    <motion.div style={{ opacity: headerOpacity, y: headerY }} className="mb-10 md:mb-14">
-                        <div className="text-[11px] tracking-[0.18em] uppercase text-accent font-medium mb-4">Core Expertise</div>
-                        <h2 className="font-display text-[clamp(28px,3vw,42px)] font-bold tracking-tight text-text-strong leading-[1.1] mb-4">
-                            Owning the full product lifecycle
-                        </h2>
-                        <p className="text-text-muted text-[17px] max-w-[560px] leading-[1.8]">
-                            From customer-facing features to Revenue to Regulatory compliance — Managing the whole stack.
-                        </p>
-                    </motion.div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                        {expertiseList.map((item, i) => {
-                            // Instant staggered triggers starting from 0 (entry)
-                            const start = (i * 0.02);
-                            const end = start + 0.1;
-
-                            const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
-                            const y = useTransform(scrollYProgress, [start, end], [40, 0]);
-
-                            return (
-                                <motion.div
-                                    key={i}
-                                    style={{
-                                        opacity,
-                                        y,
-                                    }}
-                                >
-                                    <GlowingEdgeCard className="h-full">
-                                        <div className="p-6 md:p-8 text-left">
-                                            <div className="w-12 h-12 text-[24px] rounded-xl bg-[var(--color-white-5)] border border-[var(--color-white-10)] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                                                {item.icon}
-                                            </div>
-
-                                            <h3 className="font-display text-[20px] font-bold text-text-strong mb-3 tracking-tight leading-snug">
-                                                {item.title}
-                                            </h3>
-                                            <p className="text-[14px] text-text-muted leading-[1.7]">
-                                                {item.desc}
-                                            </p>
-                                            <div className="flex flex-wrap gap-1.5 mt-4">
-                                                {item.tags.map((tag, j) => (
-                                                    <span
-                                                        key={j}
-                                                        className="text-[11px] px-2.5 py-1 rounded-full bg-[var(--color-white-5)] text-text-muted tracking-[0.04em]"
-                                                    >
-                                                        {tag}
-                                                    </span>
-                                                ))}
-                                            </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {expertiseList.map((item, i) => {
+                        return (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ 
+                                    duration: 0.5, 
+                                    delay: i * 0.1, // Staggered delay for "one by one" effect
+                                    ease: "easeOut"
+                                }}
+                            >
+                                <GlowingEdgeCard className="h-full">
+                                    <div className="p-6 md:p-8 text-left">
+                                        <div className="w-12 h-12 text-[24px] rounded-xl bg-[var(--color-white-5)] border border-[var(--color-white-10)] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                                            {item.icon}
                                         </div>
-                                    </GlowingEdgeCard>
-                                </motion.div>
-                            );
-                        })}
-                    </div>
+
+                                        <h3 className="font-display text-[20px] font-bold text-text-strong mb-3 tracking-tight leading-snug">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-[14px] text-text-muted leading-[1.7]">
+                                            {item.desc}
+                                        </p>
+                                        <div className="flex flex-wrap gap-1.5 mt-4">
+                                            {item.tags.map((tag, j) => (
+                                                <span
+                                                    key={j}
+                                                    className="text-[11px] px-2.5 py-1 rounded-full bg-[var(--color-white-5)] text-text-muted tracking-[0.04em]"
+                                                >
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </GlowingEdgeCard>
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </div>
-            {/* Safe spacer to avoid overlap with next section */}
-            <div className="h-[20vh]" />
         </section>
     );
 }
