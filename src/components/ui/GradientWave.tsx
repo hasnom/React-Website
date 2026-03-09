@@ -25,12 +25,21 @@ export function GradientWave() {
             }
         };
 
+        const handleTouchStart = (e: TouchEvent) => {
+            if (e.touches[0]) {
+                mouseX.set(e.touches[0].clientX);
+                mouseY.set(e.touches[0].clientY);
+            }
+        };
+
         window.addEventListener("mousemove", handleMouseMove);
-        window.addEventListener("touchmove", handleTouchMove);
+        window.addEventListener("touchmove", handleTouchMove, { passive: true });
+        window.addEventListener("touchstart", handleTouchStart, { passive: true });
 
         return () => {
             window.removeEventListener("mousemove", handleMouseMove);
             window.removeEventListener("touchmove", handleTouchMove);
+            window.removeEventListener("touchstart", handleTouchStart);
         };
     }, [mouseX, mouseY]);
 
@@ -42,15 +51,15 @@ export function GradientWave() {
             */}
             {/* Inner Core - Visible on all but simplified on mobile */}
             <motion.div
-                className="absolute w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full pointer-events-none z-10"
+                className="absolute w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full pointer-events-none z-[100]" // Increased Z-index to be on top of content
                 style={{
                     x: springX,
                     y: springY,
                     translateX: "-50%",
                     translateY: "-50%",
                     background: "radial-gradient(circle, var(--accent) 0%, transparent 60%)",
-                    opacity: 0.2,
-                    filter: "blur(30px)", // Reduced blur for mobile performance
+                    opacity: 0.25, // Slightly higher opacity for visibility
+                    filter: "blur(40px)",
                 }}
             />
 

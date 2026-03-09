@@ -255,7 +255,7 @@ body {
   width: 100vw;
   height: 100vh;
   height: 100svh;
-  z-index: -1;
+  z-index: 1; /* Allow children to manage their own z-index relative to content */
   background-color: var(--bg);
   overflow: hidden;
   pointer-events: none;
