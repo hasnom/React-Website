@@ -6,7 +6,21 @@ import { GlowingEdgeCard } from "@/components/ui/GlowingEdgeCard";
 
 const timelineData = [
     {
-        period: "Jun 2022 – Present",
+        period: "Jun 2026 – Present",
+        title: "Vice President — Digital Onboarding Channels",
+        company: "United Bank Limited · Lahore, Pakistan",
+        highlights: [
+            "Leading digital onboarding product & business transformation for Retail, SME, and Business Banking across Pakistan and the UAE.",
+            "Owning the strategic product roadmap, business cases, and KPIs, reporting directly to the Chief Digital Officer and Steering Committee.",
+            "Driving an approved program to slash digital account-opening times from ~18 minutes to under 5 minutes across the portfolio.",
+            "Redesigning onboarding journeys with eKYC/biometric verification and analytics-led recovery to reduce a ~50% application drop-off rate.",
+            "Launched a Virtual Relationship Manager Fulfillment Hub to recover abandoned journeys (~20% conversion) and piloted agentic AI callback automation.",
+            "Collaborating with cross-functional teams to digitalize workflows and incorporate smart decision-making tools, significantly reducing back-office operational load."
+        ],
+        dim: false,
+    },
+    {
+        period: "Jun 2022 – May 2026",
         title: "Product Owner — Digital Channels",
         company: "The Bank of Punjab · Lahore, Pakistan · VP Level",
         highlights: [
